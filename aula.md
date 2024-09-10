@@ -7,8 +7,8 @@
 ## Componentes de uma linguagem
 
 - [x] Comentários
-- [] Declaração de variáveis (const, let)
-- [] Operadores (atribuição, concatenação, matemáticos, lógicos)
+- [x] Declaração de variáveis (const, let)
+- [x] Operadores (atribuição, concatenação, matemáticos, lógicos)
 - [] Tipos de dados (string, number, boolean)
 - [] Estrutura de dados (function, object, array)
 - [] Controle de fluxo (if/else)
@@ -20,19 +20,52 @@
 3. Apresentar os dados
 
 ## Escopo e variaveis
-Variável -> let
-Constante -> const
-
-Escopo global é tudo fora de chaves {}
-Escopo local é tudo dentro de chaves {}
+- [x] Variável -> let
+- [x] Constante -> const
+- [x] Escopo global é tudo fora de chaves {}
+- [x] Escopo local é tudo dentro de chaves {}
 
 
 ## Tipos de dados
-Strings (textos): repesentados entre " ", ' ', ou ``
-Number: 1, 2, 4.52
-Functions
+- [x] Strings (textos): repesentados entre " ", ' ', ou ``
+- [x] Number: 1, 2, 4.52
+- [x] Boolean: true, false
+
 
 ## Operadores
-(=) Atribuição
-(==) Igualdade
-()
+- (=) Atribuição
+- (==) Igualdade
+- (+) Operador de concatenação ou de soma
+    - Concatena Strings
+    - Soma valores numéricos
+
+## Estrutura de dados
+### Arrays
+- [x] É uma lista que contém diferentes tipos de dados, representado por [ ]
+
+### Objetos
+```jsx
+let meta = {
+    value: "ler um livro por mês",
+    checked: false
+}
+```
+- [x] Atributos e métodos
+- [x] Criação e manipulação de objetos
+- [x] Acesso a propriedades de objetos
+
+### Métodos e Funções
+1. Métodos são feitos dentro dos objetos
+2. Funções são desenvolvidas fora dos objetos
+
+#### Funções
+- [x] criar, passar argumento
+- [x] executar
+- [x] arrow function
+```jsx
+const criarMeta = () => {}
+```
+- [x] named function
+```jsx
+function criarMeta() {}
+```
