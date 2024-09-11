@@ -34,10 +34,13 @@
 
 ## Operadores
 - (=) Atribuição
-- (==) Igualdade
 - (+) Operador de concatenação ou de soma
     - Concatena Strings
     - Soma valores numéricos
+- **Operadores de comparação**
+- (==) Igualdade
+- (!=) Diferente
+- (>, >=, <, <=) Maior, Maior igual, Menor, Menor igual
 
 ## Estrutura de dados
 ### Arrays
@@ -75,6 +78,7 @@ function criarMeta() {}
 
 # Estruturas condicionais
 - [x] switch
+- [x] if/else
 
 # Módulos em Node.js
 - [x] Importação de módulos (require, ComonJS)
@@ -85,4 +89,5 @@ function criarMeta() {}
 ## Programação assíncrona e Promises
 - [x] Uso de funções assíncronas (async/await)
     - [x] Promessas são as respostas que funções assíncronas fazem de um retorno, seja positivo ou negativo (ex: fazer um pedido acarreta numa promessa positiva 'Pedido feito!' ou negativa 'Pedido negado')
+    - [x] Funções assíncronas esperam algo acontecer para depois dar prosseguimento ao código
 
