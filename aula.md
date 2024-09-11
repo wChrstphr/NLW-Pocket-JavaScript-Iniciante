@@ -9,10 +9,10 @@
 - [x] Comentários
 - [x] Declaração de variáveis (const, let)
 - [x] Operadores (atribuição, concatenação, matemáticos, lógicos)
-- [] Tipos de dados (string, number, boolean)
-- [] Estrutura de dados (function, object, array)
-- [] Controle de fluxo (if/else)
-- [] Estrutura de repetição (for, while)
+- [x] Tipos de dados (string, number, boolean)
+- [x] Estrutura de dados (function, object, array)
+- [x] Controle de fluxo (if/else)
+- [x] Estrutura de repetição (for, while)
 
 # Fases da resolução de um problema
 1. Coletar os dados
@@ -45,8 +45,13 @@
 ## Estrutura de dados
 ### Arrays
 - [x] É uma lista que contém diferentes tipos de dados, representado por [ ]
+- [x] Métodos de array: forEach, find, push
 
 ### Objetos
+Vale ressaltar que tudo pode ser visto como um Objeto dentro do JavaScript utilizando do ponto '.' após o tipo
+- "String".
+- 2.0.
+- meta.
 ```jsx
 let meta = {
     value: "ler um livro por mês",
