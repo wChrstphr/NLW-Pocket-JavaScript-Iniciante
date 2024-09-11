@@ -69,3 +69,7 @@ const criarMeta = () => {}
 ```jsx
 function criarMeta() {}
 ```
+
+# Estruturas de repetição
+- [x] while
+- [] 
