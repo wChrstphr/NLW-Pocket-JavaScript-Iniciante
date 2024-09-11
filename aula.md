@@ -75,3 +75,6 @@ function criarMeta() {}
 
 # Estruturas condicionais
 - [x] switch
+
+# npm packages
+- npm install inquirer
