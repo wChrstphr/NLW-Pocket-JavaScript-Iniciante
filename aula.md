@@ -76,5 +76,13 @@ function criarMeta() {}
 # Estruturas condicionais
 - [x] switch
 
-# npm packages
+# Módulos em Node.js
+- [x] Importação de módulos (require, ComonJS)
+- [x] Biblioteca 'inquirer' para criar prompts interativos
+## npm packages
 - npm install inquirer
+
+## Programação assíncrona e Promises
+- [x] Uso de funções assíncronas (async/await)
+    - [x] Promessas são as respostas que funções assíncronas fazem de um retorno, seja positivo ou negativo (ex: fazer um pedido acarreta numa promessa positiva 'Pedido feito!' ou negativa 'Pedido negado')
+
