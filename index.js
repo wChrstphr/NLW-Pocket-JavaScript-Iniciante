@@ -1,9 +1,18 @@
 function start () {
-    let count = 1;
-    while (count <= 10) {
-        console.log("Entrou: " + count)
-        count++;
-        // return para o loop
+    
+    while (true) {
+        let opcao = "Cadastrar"
+        
+        switch (opcao) {
+            case "cadastrar":
+                console.log("Vamos Cadastrar");
+                break;
+            case "listar":
+                console.log("Vamos Listar");
+                break;
+            case "sair":
+                return
+        }
     }
 }
 

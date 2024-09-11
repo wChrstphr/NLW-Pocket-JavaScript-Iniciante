@@ -72,4 +72,6 @@ function criarMeta() {}
 
 # Estruturas de repetição
 - [x] while
-- [] 
+
+# Estruturas condicionais
+- [x] switch
