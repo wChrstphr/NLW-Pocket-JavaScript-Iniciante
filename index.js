@@ -63,6 +63,7 @@ const listarMetas = async () => {
 const metasRealizdas = async () => {
     // vamos pegar uma meta por vez utilizando o metas.filter e rodar a função
     const realizadas = metas.filter((meta) => {
+        // retorna verdadeiro se a meta faz parte do filtro, ou seja, se checked = true
         return meta.checked;
     })
 
@@ -72,12 +73,29 @@ const metasRealizdas = async () => {
     }
     
     await select({
-        message: "Metas Concluídas",
+        message: "Metas Concluídas: " + realizadas.length,
         choices: [...realizadas]
     }
     )
 }
 
+const metasAbertas = async () => {
+    const abertas = metas.filter((meta) => {
+        // apenas meta.checked que retornar TRUE irá fazer parte de abertas
+        return meta.checked != true // ou !meta.checked
+    })
+
+    if (abertas.length == 0) {
+        console.log("Parabéns! Você realizou todas as suas metas.");
+        return;
+    }
+    console.log(metasAbertas)
+
+    await select({
+        message: "Metas em aberto: " + abertas.length,
+        choices: [...abertas]
+    })
+}
 
 // funcao start
 const start = async() => {
@@ -100,6 +118,10 @@ const start = async() => {
                     value: "realizadas"
                 },
                 {
+                    name: "Metas abertas",
+                    value: "abertas"
+                },
+                {
                     name: "Sair do aplicativo",
                     value: "sair"
                 },
@@ -117,6 +139,9 @@ const start = async() => {
                 break;
             case "realizadas":
                 await metasRealizdas();
+                break;
+            case "abertas":
+                await metasAbertas();
                 break;
             case "sair":
                 console.log("Até a proxima");
