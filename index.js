@@ -1,16 +1,25 @@
 // select é utilizado para selecionar por meio de arrows '>' no menu
 // input é utilizado para esperar um input pelo usuário
 // checkbox é utilizado para checagem de itens
-const { select, input, checkbox } = require("@inquirer/prompts")
+const { select, input, checkbox } = require("@inquirer/prompts");
+const fs = require("fs").promises;
 
 let mensagem = "Seja bem-vindo ao MetaTerminal";
+let metas;
 
-let meta = {
-    value: "Beber 3L de agua por dia",
-    checked: false
+const carregarMetas = async () => {
+    try {
+        const dados = await fs.readFile("metas.json", "UTF-8");
+        // convertendo os dados json para o array metas
+        metas = JSON.parse(dados);
+    } catch (erro) {
+        metas = []
+    }
 }
 
-let metas = [ meta ]
+const salvarMetas = async () => {
+    await fs.writeFile("metas.json", JSON.stringify(metas, null, 2));
+}
 
 // async sempre é acompanhado por await e vice-versa
 const cadastrarMeta = async () => {
@@ -29,6 +38,10 @@ const cadastrarMeta = async () => {
 }
 
 const listarMetas = async () => {
+    if (metas.length == 0) {
+        mensagem = "Cadastre novas metas para listá-las!";
+        return;
+    }
     const selecionadas = await checkbox ({
         message: "Utilize as setas para mudar de meta, o espaço para marcar ou desmarcar e o Enter para finalizar",
         choices: [...metas], // ...metas serve para copiar o conteudo de metas, para que não modifiquemos a fonte
@@ -41,7 +54,7 @@ const listarMetas = async () => {
 
     if (selecionadas.length == 0) {
         mensagem = "Nenhuma meta foi selecionada";
-        return
+        return;
     }
 
     // desmarcando todas as metas para evitar erro 
@@ -84,6 +97,10 @@ const metasRealizdas = async () => {
 }
 
 const metasAbertas = async () => {
+    if (metas.length == 0) {
+        mensagem = "Cadastre novas metas para poder marca-las aqui!";
+        return;
+    }
     const abertas = metas.filter((meta) => {
         // apenas meta.checked que retornar TRUE irá fazer parte de abertas
         return meta.checked != true // ou !meta.checked
@@ -102,6 +119,10 @@ const metasAbertas = async () => {
 }
 
 const excluirMetas = async () => {
+    if (metas.length == 0) {
+        mensagem = "Não existem metas para excluir!";
+        return;
+    }
     const metasDesmarcadas = metas.map((meta) => {
         return { value: meta.value, checked: false }
         })
@@ -142,8 +163,12 @@ const mostrarMensagem = () => {
 
 // funcao start
 const start = async() => {
+    await carregarMetas();
+
     while (true) {
         mostrarMensagem();
+        await salvarMetas();
+
         // await serve para que o console espere o usuario selecionar uma opcao
         const opcao = await select({
             message: "Menu >",

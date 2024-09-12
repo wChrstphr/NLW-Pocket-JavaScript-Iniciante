@@ -1,0 +1,14 @@
+[
+    {
+      "value": "Beber 3L de água",
+      "checked": false
+    },
+    {
+      "value": "Estudar 2 horas",
+      "checked": true
+    },
+    {
+      "value": "Ler por 15 minutos",
+      "checked": false
+    }
+  ]

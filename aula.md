@@ -90,8 +90,14 @@ function criarMeta() {}
 # Módulos em Node.js
 - [x] Importação de módulos (require, ComonJS)
 - [x] Biblioteca 'inquirer' para criar prompts interativos
+- [x] FS (file system)
 ## npm packages
 - npm install inquirer
+
+## JSON
+- [x] JavaScript Object Notation (.json)
+- [x] JSON.parse() -> Transforma de JSON para JavaScript
+- [x] JSON.stringify -> Transforma de JavaScript para JSON
 
 ## Programação assíncrona e Promises
 - [x] Uso de funções assíncronas (async/await)

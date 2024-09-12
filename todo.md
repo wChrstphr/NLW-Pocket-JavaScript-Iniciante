@@ -3,5 +3,8 @@
     - [x] Metas realizadas
     - [x] Metas abertas
 - [x] Marcar/Desmarcar etas como concluída
-- [x]Remover metas
-- [x]Sistema de mensagens
+- [x] Remover metas
+- [x] Sistema de mensagens
+- [x] Persistência de Dados
+    - [x] Sistema de carregar metas
+    - [x] Sistema de salvar metas
