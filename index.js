@@ -26,7 +26,7 @@ const cadastrarMeta = async () => {
 }
 
 const listarMetas = async () => {
-    const respostas = await checkbox ({
+    const selecionadas = await checkbox ({
         message: "Utilize as setas para mudar de meta, o espaço para marcar ou desmarcar e o Enter para finalizar",
         choices: [...metas], // ...metas serve para copiar o conteudo de metas, para que não modifiquemos a fonte
         instructions: false,
@@ -36,7 +36,7 @@ const listarMetas = async () => {
         m.checked = false
     })
 
-    if (respostas.length == 0) {
+    if (selecionadas.length == 0) {
         console.log("Nenhuma meta foi selecionada");
         return
     }
@@ -46,10 +46,10 @@ const listarMetas = async () => {
         m.checked = false
     })
 
-    // remarcando de acordo com respostas
-    // forEach itera sobre o array respostas executando a função entre ()
+    // remarcando de acordo com selecionadas
+    // forEach itera sobre o array selecionadas executando a função entre ()
     // metas.find busca saber se o valor da meta passada 'm.value' é igual ao valor da resposta, se sim, essa meta é marcada como checked 'true', se não, continua a busca iterando sobre os arrays
-    respostas.forEach((resposta) => {
+    selecionadas.forEach((resposta) => {
         const meta = metas.find((m) => {
             return m.value == resposta
         })
@@ -97,6 +97,37 @@ const metasAbertas = async () => {
     })
 }
 
+const excluirMetas = async () => {
+    const metasDesmarcadas = metas.map((meta) => {
+        return { value: meta.value, checked: false }
+        })
+
+    const metasParaExcluir = await checkbox ({
+        message: "Selecione uma meta para excluir.",
+        choices: [...metasDesmarcadas], // ...metas serve para copiar o conteudo de metas, para que não modifiquemos a fonte
+        instructions: false,
+    })
+
+    if (metasParaExcluir.length == 0) {
+        console.log ("Não foram selecionadas metas para exclusão");
+        return;
+    }
+
+    metasParaExcluir.forEach((item) => {
+        // filter retorna um novo array que substitui tudo o que esta em 'metas'
+        // a nova lista de metas só terá itens desmarcados
+        metas = metas.filter((meta) => {
+            // aqui comparamos se a meta passadas tem mesmo valor de item 
+            // em metasParaExcluir, se sim, é falso e o item NÃO entra no
+            // novo array de metas
+            return meta.value != item;
+        })
+    })
+
+    console.log("Meta(s) deletada(s) com sucesso!");
+
+}
+
 // funcao start
 const start = async() => {
     while (true) {
@@ -122,6 +153,10 @@ const start = async() => {
                     value: "abertas"
                 },
                 {
+                    name: "Excluir metas",
+                    value: "excluir"
+                },
+                {
                     name: "Sair do aplicativo",
                     value: "sair"
                 },
@@ -142,6 +177,9 @@ const start = async() => {
                 break;
             case "abertas":
                 await metasAbertas();
+                break;
+            case "excluir":
+                await excluirMetas();
                 break;
             case "sair":
                 console.log("Até a proxima");
