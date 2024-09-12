@@ -31,6 +31,10 @@ const listarMetas = async () => {
         choices: [...metas], // ...metas serve para copiar o conteudo de metas, para que não modifiquemos a fonte
         instructions: false,
     })
+    // Desmarcando todas as metas para evitar problemas ao desmarcar todas
+    metas.forEach((m) => {
+        m.checked = false
+    })
 
     if (respostas.length == 0) {
         console.log("Nenhuma meta foi selecionada");
