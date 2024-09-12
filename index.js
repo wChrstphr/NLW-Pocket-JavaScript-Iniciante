@@ -1,7 +1,9 @@
-const { select, input, checkbox } = require("@inquirer/prompts")
 // select é utilizado para selecionar por meio de arrows '>' no menu
 // input é utilizado para esperar um input pelo usuário
 // checkbox é utilizado para checagem de itens
+const { select, input, checkbox } = require("@inquirer/prompts")
+
+let mensagem = "Seja bem-vindo ao MetaTerminal";
 
 let meta = {
     value: "Beber 3L de agua por dia",
@@ -16,13 +18,14 @@ const cadastrarMeta = async () => {
 
     // verificando se a pessoa digitou algo
     if (meta.length == 0) {
-        console.log("A meta não pode ser vazia.");
+        mensagem = "A meta não pode ser vazia.";
         return
     }
 
     // para colocar novas metas no array de metas []
     metas.push({value: meta, checked: false})
 
+    mensagem = "Meta cadastrada com sucesso!"
 }
 
 const listarMetas = async () => {
@@ -37,7 +40,7 @@ const listarMetas = async () => {
     })
 
     if (selecionadas.length == 0) {
-        console.log("Nenhuma meta foi selecionada");
+        mensagem = "Nenhuma meta foi selecionada";
         return
     }
 
@@ -56,7 +59,7 @@ const listarMetas = async () => {
         meta.checked = true;
     })
 
-    console.log("Meta(s) marcadas como concluída(s)");
+    mensagem = selecionadas.length > 1 ? "Metas marcadas com sucesso!" : "Meta marcada com sucesso!";
 
 }
 
@@ -68,7 +71,7 @@ const metasRealizdas = async () => {
     })
 
     if (realizadas.length == 0) {
-        console.log("Complete uma meta para visualiza-la aqui! <3");
+        mensagem = "Complete uma meta para visualiza-la aqui! <3";
         return;
     }
     
@@ -77,6 +80,7 @@ const metasRealizdas = async () => {
         choices: [...realizadas]
     }
     )
+    //mensagem = "Continue completando suas metas!"
 }
 
 const metasAbertas = async () => {
@@ -86,15 +90,15 @@ const metasAbertas = async () => {
     })
 
     if (abertas.length == 0) {
-        console.log("Parabéns! Você realizou todas as suas metas.");
+        mensagem = "Você realizou todas as suas metas. Parabéns! ";
         return;
     }
-    console.log(metasAbertas)
 
     await select({
         message: "Metas em aberto: " + abertas.length,
         choices: [...abertas]
     })
+    //mensagem = "Metas a serem realizadas";
 }
 
 const excluirMetas = async () => {
@@ -109,7 +113,7 @@ const excluirMetas = async () => {
     })
 
     if (metasParaExcluir.length == 0) {
-        console.log ("Não foram selecionadas metas para exclusão");
+        mensagem = "Não foram selecionadas metas para exclusão";
         return;
     }
 
@@ -124,14 +128,22 @@ const excluirMetas = async () => {
         })
     })
 
-    console.log("Meta(s) deletada(s) com sucesso!");
+    mensagem = metasParaExcluir.length > 1 ? "Metas excluídas com sucesso!" : "Meta excluída com sucesso!";
+}
 
+const mostrarMensagem = () => {
+    console.clear();
+    if (mensagem != "") {
+        console.log(mensagem);
+        console.log("")
+        mensagem = "";
+    }
 }
 
 // funcao start
 const start = async() => {
     while (true) {
-
+        mostrarMensagem();
         // await serve para que o console espere o usuario selecionar uma opcao
         const opcao = await select({
             message: "Menu >",
@@ -167,7 +179,6 @@ const start = async() => {
         switch (opcao) {
             case "cadastrar":
                 await cadastrarMeta();
-                console.log(metas);
                 break;
             case "listar":
                 await listarMetas();

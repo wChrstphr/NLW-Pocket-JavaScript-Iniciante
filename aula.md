@@ -16,7 +16,7 @@
 
 # Fases da resolução de um problema
 1. Coletar os dados
-2. Processar os dados (manipular, alterar, entender...)
+2. Processar os dados (manipular, alterar, guardar entender...)
 3. Apresentar os dados
 
 ## Escopo e variaveis
@@ -47,7 +47,7 @@
 ## Estrutura de dados
 ### Arrays
 - [x] É uma lista que contém diferentes tipos de dados, representado por [ ]
-- [x] Métodos de array: push, [forEach, find, filter] : HOF (Highet Order Functions){Sempre recebem uma função}
+- [x] Métodos de array: push, [forEach, find, filter, map] : HOF (Highet Order Functions){Sempre recebem uma função}
 
 ### Objetos
 Vale ressaltar que tudo pode ser visto como um Objeto dentro do JavaScript utilizando do ponto '.' após o tipo
