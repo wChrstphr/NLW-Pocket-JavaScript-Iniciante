@@ -41,11 +41,13 @@
 - (==) Igualdade
 - (!=) Diferente
 - (>, >=, <, <=) Maior, Maior igual, Menor, Menor igual
+**Spread Operator**
+- (...)
 
 ## Estrutura de dados
 ### Arrays
 - [x] É uma lista que contém diferentes tipos de dados, representado por [ ]
-- [x] Métodos de array: forEach, find, push
+- [x] Métodos de array: push, [forEach, find, filter] : HOF (Highet Order Functions){Sempre recebem uma função}
 
 ### Objetos
 Vale ressaltar que tudo pode ser visto como um Objeto dentro do JavaScript utilizando do ponto '.' após o tipo
